@@ -1,0 +1,7 @@
+{
+  "name": "timeplanner-app-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
