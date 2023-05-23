@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar class="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="login()">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Registrarme</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="registro" (ngSubmit)="submitRegistrar()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Teléfono"
+              labelPlacement="floating"
+              placeholder="Ingresa tu número de teléfono"
+              formControlName="telefono"
+              class="form-control"
+              maxlength="15"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.telefono"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('telefono')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              #passwordEyeRegister
+              label="Contraseña"
+              labelPlacement="floating"
+              placeholder="Ingresa tu contraseña"
+              formControlName="password"
+              class="form-control"
+              minlength="8"
+              [type]="passwordTypeInput"
+              clearOnEdit="false"
+              type="password"
+            ></ion-input>
+            <button
+              slot="end"
+              class="btn_eye_icon"
+              (click)="togglePasswordMode()"
+            >
+              <ion-icon
+                [name]="(passwordTypeInput === 'text') ? 'eye-off' : 'eye'"
+              ></ion-icon>
+            </button>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.password"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('password')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              #passwordEyeRegister
+              label="Confirmar Contraseña"
+              labelPlacement="floating"
+              placeholder="Confirmar contraseña"
+              formControlName="password_confirm"
+              class="form-control"
+              minlength="8"
+              [type]="passwordTypeInput"
+              clearOnEdit="false"
+              type="password"
+            ></ion-input>
+            <button
+              slot="end"
+              class="btn_eye_icon"
+              (click)="togglePasswordMode()"
+            >
+              <ion-icon
+                [name]="(passwordTypeInput === 'text') ? 'eye-off' : 'eye'"
+              ></ion-icon>
+            </button>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.password_confirm"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('password_confirm')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-select
+              label="Sexo"
+              placeholder="Elegir sexo"
+              formControlName="sexo"
+              class="form-control"
+              [multiple]="true"
+            >
+              <ion-select-option
+                *ngFor="let sexo of sexos"
+                value="{{sexo.sex_id}}"
+              >
+                {{sexo.sex_sexo}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div id="note" *ngFor="let validation of validation_messages.sexo">
+            <ion-note
+              color="danger"
+              *ngIf="getError('sexo')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <p class="ion-text-center">
+            <ion-button type="submit" [disabled]="!registro.valid"
+              >Registrarme</ion-button
+            >
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
