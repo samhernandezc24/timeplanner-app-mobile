@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,13 @@ export class HomePage {
 
   constructor(
     private usuarioService: UsuariosService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.loadSesionado();
-    this.loadUsuarios();
+    //this.loadSesionado();
+    //this.loadUsuarios();
   }
 
   async loadUsuarios() {
@@ -61,5 +63,9 @@ export class HomePage {
       await alert.present();
       localStorage.removeItem('sesion');
     }
+  }
+
+  introduccion(): void {
+    this.router.navigate(['/introduccion']);
   }
 }

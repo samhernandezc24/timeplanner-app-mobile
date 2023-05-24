@@ -1,0 +1,31 @@
+ion-title {
+  --color: #000;
+  font-size: 28px;
+}
+
+.image-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > ion-thumbnail {
+    --size: 140px;
+  }
+}
+
+ion-thumbnail {
+  --size: 50px;
+  --border-radius: 14px;
+}
+
+.menu-list {
+  margin-top: 1rem;
+
+  > ion-button ion-thumbnail {
+    margin-right: 10px;
+  }
+
+  > *:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}

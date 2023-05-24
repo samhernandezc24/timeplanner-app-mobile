@@ -1,23 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Blank </ion-title>
+    <ion-title class="ion-text-center"> Menú </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <ion-list>
-      <ion-item button *ngFor="let usuario of usuarios">
-        <ion-label
-          >{{ usuario.usu_nombre }} {{ usuario.usu_apellido }}</ion-label
-        >
-      </ion-item>
-    </ion-list>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="menu-list">
+    <ion-button
+      [routerLink]="['/medicamentos']"
+      color="danger"
+      size="large"
+      expand="block"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/medicamento.png" alt="Medicamento"></ion-img>
+      </ion-thumbnail>
+      Medicamentos
+    </ion-button>
+    <ion-button
+      [routerLink]="['/citas']"
+      color="danger"
+      size="large"
+      expand="block"
+    >
+      <ion-thumbnail>
+        <ion-img
+          src="assets/icon/agregarcita.png"
+          alt="Citas Médicas"
+        ></ion-img>
+      </ion-thumbnail>
+      Citas Médicas
+    </ion-button>
+    <ion-button
+      [routerLink]="['/familiar']"
+      color="danger"
+      size="large"
+      expand="block"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/hogar.png" alt="Miembro Familiar"></ion-img>
+      </ion-thumbnail>
+      Miembro Familiar
+    </ion-button>
+    <ion-button
+      [routerLink]="['/mi-perfil']"
+      color="danger"
+      size="large"
+      expand="block"
+    >
+      <ion-icon
+        name="person-circle-outline"
+        size="large"
+        slot="start"
+      ></ion-icon>
+      Mi Perfil
+    </ion-button>
   </div>
 </ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="introduccion()">
+    <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+    Ver Introducción
+  </ion-button>
+</ion-footer>

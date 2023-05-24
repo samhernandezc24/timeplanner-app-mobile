@@ -1,0 +1,106 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> Añadir Medicamento </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="agregarMedicamentos">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Nombre del medicamento"
+              labelPlacement="floating"
+              placeholder="Ingresa el nombre del medicamento"
+              formControlName="med_nombre"
+              class="form-control"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-select
+              label="Tipo de medicamento"
+              placeholder="Elegir medicamento"
+              formControlName="med_tipo"
+              class="form-control"
+              [multiple]="true"
+            >
+              <ion-select-option
+                *ngFor="let medicamento of medicamentos"
+                value="{{medicamento.med_id}}"
+              >
+                {{medicamento.med_medicamento}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Dosis"
+              labelPlacement="floating"
+              placeholder="Indicar la dosis"
+              formControlName="med_dosis"
+              class="form-control"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Horario"
+              labelPlacement="floating"
+              placeholder="Indicar el horario de ingesta"
+              formControlName="med_horario"
+              class="form-control"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-textarea
+              label="Nota (opcional)"
+              labelPlacement="floating"
+              placeholder="Agrear una nota"
+              formControlName="med_nota"
+              class="form-control"
+              [counter]="true"
+              maxlength="100"
+            ></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <p class="ion-text-center">
+            <ion-button
+              [routerLink]="['/agregar-cita']"
+              color="danger"
+              size="large"
+              expand="block"
+            >
+              <ion-thumbnail>
+                <ion-img
+                  src="assets/icon/agregarcita.png"
+                  alt="Agregar Cita"
+                ></ion-img>
+              </ion-thumbnail>
+              Agregar Cita
+            </ion-button>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="regresar()">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+</ion-footer>

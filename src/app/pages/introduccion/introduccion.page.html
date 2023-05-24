@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center"> Introducción </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-text>
+    <h2>¡Bienvenido a TimePlanner!</h2>
+  </ion-text>
+
+  <div class="ion-margin-top">
+    <p>
+      TimePlanner es una aplicación móvil diseñada especialmente para adultos
+      mayores de 60 a 75 años, con el objetivo de facilitar la toma de
+      medicamentos y recordarles sus citas médicas de manera sencilla y
+      amigable.
+    </p>
+    <ion-grid>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img
+            src="assets/icon/recordatorio.png"
+            alt="Añadir recordatorios"
+          ></ion-img>
+        </ion-thumbnail>
+        <ion-text class="ion-text-wrap">
+          <h3>Añadir recordatorios</h3>
+        </ion-text>
+      </ion-item>
+    </ion-grid>
+    <p>
+      Nunca se salte ni pierda sus medicamentos y citas. Reciba recordatorios
+      exactos y oportunos de medicamentos y citas médicas.
+    </p>
+    <ion-grid>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img
+            src="assets/icon/masmedicamentos.png"
+            alt="Añadir medicamentos"
+          ></ion-img>
+        </ion-thumbnail>
+        <ion-text class="ion-text-wrap">
+          <h3>Añadir medicamentos</h3>
+        </ion-text>
+      </ion-item>
+    </ion-grid>
+    <p>
+      Agregue sus medicamentos con información importante, como los detalles del
+      medicamento, la dosis y la duración.
+    </p>
+    <ion-grid>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img
+            src="assets/icon/agregarcita.png"
+            alt="Aregegar cita"
+          ></ion-img>
+        </ion-thumbnail>
+        <ion-text class="ion-text-wrap">
+          <h3>Agregar citas</h3>
+        </ion-text>
+      </ion-item>
+    </ion-grid>
+    <p>
+      Agregue sus citas médicas con detalles importantes como el nombre del
+      médico, el número de teléfono, la hora y la fecha de la cita y notas
+      adicionales.
+    </p>
+    <ion-grid>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img
+            src="assets/icon/hogar.png"
+            alt="Aregegar familiar"
+          ></ion-img>
+        </ion-thumbnail>
+        <ion-text class="ion-text-wrap">
+          <h3>Agregar familiar</h3>
+        </ion-text>
+      </ion-item>
+    </ion-grid>
+    <p>
+      Agregue a su familiar para que se le notifique cuando será su próxima
+      cita.
+    </p>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-toolbar color="light">
+    <ion-button
+      [routerLink]="['/home']"
+      expand="block"
+      color="primary"
+      size="large"
+    >
+      <ion-icon slot="start" name="star"></ion-icon>
+      Comenzar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

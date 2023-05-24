@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> Cita Médica </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="image-center">
+    <ion-thumbnail>
+      <ion-img src="assets/icon/recordatorio.png" alt="Recordatorio"></ion-img>
+    </ion-thumbnail>
+  </div>
+
+  <div class="menu-list">
+    <ion-button
+      [routerLink]="['/agregar-cita']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/agregarcita.png" alt="Agregar Cita"></ion-img>
+      </ion-thumbnail>
+      Agregar Cita
+    </ion-button>
+    <ion-button
+      [routerLink]="['/lista-citas']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/cita-online.png" alt="Listado"></ion-img>
+      </ion-thumbnail>
+      Listado
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="regresar()">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+</ion-footer>

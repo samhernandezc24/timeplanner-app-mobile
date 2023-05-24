@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> Medicamentos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="image-center">
+    <ion-thumbnail>
+      <ion-img src="assets/icon/medicamentos.png" alt="Medicamentos"></ion-img>
+    </ion-thumbnail>
+  </div>
+
+  <div class="menu-list">
+    <ion-button
+      [routerLink]="['/agregar-medicamentos']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/adicional.png" alt="Agregar"></ion-img>
+      </ion-thumbnail>
+      Agregar
+    </ion-button>
+    <ion-button
+      [routerLink]="['/lista-medicamentos']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img
+          src="assets/icon/listasdemedicamentos.png"
+          alt="Listado"
+        ></ion-img>
+      </ion-thumbnail>
+      Listado
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="regresar()">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+</ion-footer>

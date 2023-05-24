@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> Miembro Familiar </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="image-center">
+    <ion-thumbnail>
+      <ion-img src="assets/icon/hogar.png" alt="Miembro Familiar"></ion-img>
+    </ion-thumbnail>
+  </div>
+
+  <div class="menu-list">
+    <ion-button
+      [routerLink]="['/agregar-familiar']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img
+          src="assets/icon/agregar-usuario.png"
+          alt="Agregar Familiar"
+        ></ion-img>
+      </ion-thumbnail>
+      Agregar Familiar
+    </ion-button>
+    <ion-button
+      [routerLink]="['/lista-familiares']"
+      size="large"
+      expand="block"
+      color="danger"
+    >
+      <ion-thumbnail>
+        <ion-img src="assets/icon/usuarios-alt.png" alt="Listado"></ion-img>
+      </ion-thumbnail>
+      Listado
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="regresar()">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Regresar
+  </ion-button>
+</ion-footer>
