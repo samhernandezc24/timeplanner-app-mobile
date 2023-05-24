@@ -5,6 +5,15 @@ ion-title {
 
 ion-toolbar {
   --background: #f2f3f5;
+
+  > img {
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 ion-thumbnail {

@@ -57,6 +57,22 @@ const routes: Routes = [
     path: 'agregar-medicamentos',
     loadChildren: () => import('./pages/agregar-medicamentos/agregar-medicamentos.module').then( m => m.AgregarMedicamentosPageModule)
   },
+  {
+    path: 'lista-medicamentos',
+    loadChildren: () => import('./pages/lista-medicamentos/lista-medicamentos.module').then( m => m.ListaMedicamentosPageModule)
+  },
+  {
+    path: 'lista-citas',
+    loadChildren: () => import('./pages/lista-citas/lista-citas.module').then( m => m.ListaCitasPageModule)
+  },
+  {
+    path: 'lista-familiares',
+    loadChildren: () => import('./pages/lista-familiares/lista-familiares.module').then( m => m.ListaFamiliaresPageModule)
+  },
+  {
+    path: 'agregar-familiar',
+    loadChildren: () => import('./pages/agregar-familiar/agregar-familiar.module').then( m => m.AgregarFamiliarPageModule)
+  },
 ];
 
 @NgModule({

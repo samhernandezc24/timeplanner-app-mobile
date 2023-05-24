@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mi-perfil.page.scss'],
 })
 export class MiPerfilPage implements OnInit {
+  constructor(private location: Location) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  regresar(): void {
+    this.location.back();
   }
-
 }
