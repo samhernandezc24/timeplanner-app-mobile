@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -47,6 +48,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private loginService: LoginService,
     private alertCtrl: AlertController,
     private router: Router
   ) {}
@@ -82,8 +84,16 @@ export class LoginPage implements OnInit {
   async submitLogin() {
     localStorage.clear();
     const login = this.login?.value;
-    console.log('login');
-    this.alertError();
+    this.loginService.postLogin(login).then(async (res) => {
+      if (res !== '') {
+        await localStorage.setItem('token', res);
+        localStorage.setItem('sesion', 'login');
+        localStorage.setItem('username', login.username);
+        this.router.navigate(['/home']);
+      } else {
+        this.alertError();
+      }
+    });
   }
 
   private async alertError() {

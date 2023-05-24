@@ -16,10 +16,58 @@
         <ion-col size="12">
           <ion-item>
             <ion-input
+              label="Nombre(s)"
+              labelPlacement="floating"
+              placeholder="Ingresa tu nombre"
+              formControlName="usu_nombre"
+              class="form-control"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.usu_nombre"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('usu_nombre')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Apellido(s)"
+              labelPlacement="floating"
+              placeholder="Ingresa tus apellidos"
+              formControlName="usu_apellido"
+              class="form-control"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.usu_apellido"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('usu_apellido')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
               label="Teléfono"
               labelPlacement="floating"
               placeholder="Ingresa tu número de teléfono"
-              formControlName="telefono"
+              formControlName="username"
               class="form-control"
               maxlength="15"
               type="text"
@@ -27,11 +75,11 @@
           </ion-item>
           <div
             id="note"
-            *ngFor="let validation of validation_messages.telefono"
+            *ngFor="let validation of validation_messages.username"
           >
             <ion-note
               color="danger"
-              *ngIf="getError('telefono')[(validation.type)]"
+              *ngIf="getError('username')[(validation.type)]"
             >
               <ion-icon name="information-circle-outline"></ion-icon> {{
               validation.message }}
@@ -117,7 +165,7 @@
             <ion-select
               label="Sexo"
               placeholder="Elegir sexo"
-              formControlName="sexo"
+              formControlName="usu_sexo"
               class="form-control"
               [multiple]="true"
             >
@@ -129,10 +177,60 @@
               </ion-select-option>
             </ion-select>
           </ion-item>
-          <div id="note" *ngFor="let validation of validation_messages.sexo">
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.usu_sexo"
+          >
             <ion-note
               color="danger"
-              *ngIf="getError('sexo')[(validation.type)]"
+              *ngIf="getError('usu_sexo')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Peso"
+              labelPlacement="floating"
+              placeholder="Ingresa tu peso (kg)"
+              formControlName="usu_peso"
+              class="form-control"
+              type="number"
+            ></ion-input>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.usu_peso"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('usu_peso')[(validation.type)]"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon> {{
+              validation.message }}
+            </ion-note>
+          </div> </ion-col
+        ><ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Fecha de nacimiento"
+              labelPlacement="floating"
+              placeholder="Ingresa tu fecha de nacimiento"
+              formControlName="usu_nacimiento"
+              class="form-control"
+              type="date"
+            ></ion-input>
+          </ion-item>
+          <div
+            id="note"
+            *ngFor="let validation of validation_messages.usu_nacimiento"
+          >
+            <ion-note
+              color="danger"
+              *ngIf="getError('usu_nacimiento')[(validation.type)]"
             >
               <ion-icon name="information-circle-outline"></ion-icon> {{
               validation.message }}

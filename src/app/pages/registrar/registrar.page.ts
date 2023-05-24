@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-registrar',
@@ -22,7 +23,7 @@ export class RegistrarPage implements OnInit {
   ];
 
   validation_messages: any = {
-    telefono: [
+    username: [
       { type: 'required', message: 'El teléfono es requerido.' },
       {
         type: 'minlength',
@@ -66,11 +67,18 @@ export class RegistrarPage implements OnInit {
         message: 'Las contraseñas no coinciden.',
       },
     ],
-    sexo: [{ type: 'required', message: 'Debe indicar su sexo.' }],
+    usu_nombre: [{ type: 'required', message: 'Nombre(s) requerido(s).' }],
+    usu_apellido: [{ type: 'required', message: 'Apellido(s) requerido(s).' }],
+    usu_sexo: [{ type: 'required', message: 'Debe indicar su sexo.' }],
+    usu_peso: [{ type: 'required', message: 'Debe indicar su peso.' }],
+    usu_nacimiento: [
+      { type: 'required', message: 'Debe indicar su fecha de nacimiento.' },
+    ],
   };
 
   constructor(
     private formBuilder: FormBuilder,
+    private loginService: LoginService,
     private alertCtrl: AlertController,
     private router: Router
   ) {}
@@ -82,7 +90,7 @@ export class RegistrarPage implements OnInit {
   private buildForm() {
     this.registro = this.formBuilder.group(
       {
-        telefono: [
+        username: [
           '',
           Validators.compose([
             Validators.maxLength(15),
@@ -111,7 +119,11 @@ export class RegistrarPage implements OnInit {
             Validators.required,
           ]),
         ],
-        sexo: ['', [Validators.required]],
+        usu_nombre: ['', [Validators.required]],
+        usu_apellido: ['', [Validators.required]],
+        usu_sexo: ['', [Validators.required]],
+        usu_peso: ['', [Validators.required]],
+        usu_nacimiento: ['', [Validators.required]],
       },
       {
         validator: this.checkIfMatchingPasswords(
@@ -140,12 +152,22 @@ export class RegistrarPage implements OnInit {
   async submitRegistrar() {
     localStorage.clear();
     const registro = this.registro.value;
-    console.log('registro');
-    this.alertError();
-
-    /* if (err.status === 422) {
-        this.alertDuplicado
-    } */
+    this.loginService
+      .postRegistrar(registro)
+      .then(async (res) => {
+        if (res !== '') {
+          await localStorage.setItem('token', res);
+          localStorage.setItem('sesion', 'login');
+          localStorage.setItem('username', registro.username);
+          this.router.navigate(['/home']);
+        }
+      })
+      .catch((err: any) => {
+        console.error('esto es un error = ', err);
+        if (err.status === 422) {
+          this.alertDuplicado();
+        }
+      });
   }
 
   private async alertError() {
