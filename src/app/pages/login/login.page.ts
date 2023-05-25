@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   passwordTypeInput = 'password';
 
   validation_messages: any = {
-    telefono: [
+    username: [
       { type: 'required', message: 'El teléfono es requerido.' },
       {
         type: 'minlength',
@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
 
   private buildForm() {
     this.login = this.formBuilder.group({
-      telefono: [
+      username: [
         '',
         Validators.compose([
           Validators.maxLength(15),
@@ -83,13 +83,13 @@ export class LoginPage implements OnInit {
 
   async submitLogin() {
     localStorage.clear();
-    const login = this.login?.value;
+    const login = this.login.value;
     this.loginService.postLogin(login).then(async (res) => {
       if (res !== '') {
         await localStorage.setItem('token', res);
         localStorage.setItem('sesion', 'login');
         localStorage.setItem('username', login.username);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/introduccion']);
       } else {
         this.alertError();
       }

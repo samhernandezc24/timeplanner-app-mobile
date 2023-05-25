@@ -18,8 +18,8 @@ export class RegistrarPage implements OnInit {
   passwordTypeInput = 'password';
 
   sexos = [
-    { sex_id: '1', sex_sexo: 'Masculino' },
-    { sex_id: '2', sex_sexo: 'Femenino' },
+    { sex_id: 1, sex_sexo: 'Masculino' },
+    { sex_id: 2, sex_sexo: 'Femenino' },
   ];
 
   validation_messages: any = {
@@ -121,7 +121,7 @@ export class RegistrarPage implements OnInit {
         ],
         usu_nombre: ['', [Validators.required]],
         usu_apellido: ['', [Validators.required]],
-        usu_sexo: ['', [Validators.required]],
+        usu_sexo: [null, [Validators.required]],
         usu_peso: ['', [Validators.required]],
         usu_nacimiento: ['', [Validators.required]],
       },
@@ -152,6 +152,7 @@ export class RegistrarPage implements OnInit {
   async submitRegistrar() {
     localStorage.clear();
     const registro = this.registro.value;
+    registro.usu_sexo = registro.usu_sexo[0];
     this.loginService
       .postRegistrar(registro)
       .then(async (res) => {
@@ -159,7 +160,7 @@ export class RegistrarPage implements OnInit {
           await localStorage.setItem('token', res);
           localStorage.setItem('sesion', 'login');
           localStorage.setItem('username', registro.username);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/introduccion']);
         }
       })
       .catch((err: any) => {

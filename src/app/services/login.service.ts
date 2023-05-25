@@ -1,44 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Login {
-  telefono: string;
+  username: string;
   password: string;
 }
 
 interface Registro {
   username: string;
   password: string;
-  alu_nombre: string;
-  alu_apellido: string;
-  alu_peso: number;
-  alu_nacimiento: Date | null | undefined;
-  alu_sexo: number;
+  usu_nombre: string;
+  usu_apellido: string;
+  usu_sexo: number;
+  usu_nacimiento: Date | null | undefined;
+  usu_peso: number;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  baseUrl: string = 'http://timeplanner.test/usuario-rests';
+  private loginUrl: string = environment.baseUrl + 'usuario-rests';
 
-  httpHeader = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
   };
 
   constructor(private http: HttpClient) {}
 
-  postLogin(login: Login): Promise<any> {
-    return this.http
-      .post(this.baseUrl + '/login', login, this.httpHeader)
-      .toPromise()
-      .then((res) => res);
+  async postLogin(login: Login): Promise<any> {
+    const res = await this.http
+      .post(this.loginUrl + '/login', login, this.httpOptions)
+      .toPromise();
+    return res;
   }
 
-  postRegistrar(registro: Registro): Promise<any> {
-    return this.http
-      .post(this.baseUrl + '/registrar', registro, this.httpHeader)
-      .toPromise()
-      .then((res) => res);
+  async postRegistrar(registro: Registro): Promise<any> {
+    const res = await this.http
+      .post(this.loginUrl + '/registrar', registro, this.httpOptions)
+      .toPromise();
+    return res;
   }
 }

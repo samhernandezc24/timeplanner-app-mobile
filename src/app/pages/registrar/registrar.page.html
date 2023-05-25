@@ -171,7 +171,7 @@
             >
               <ion-select-option
                 *ngFor="let sexo of sexos"
-                value="{{sexo.sex_id}}"
+                [value]="sexo.sex_id"
               >
                 {{sexo.sex_sexo}}
               </ion-select-option>
@@ -241,7 +241,6 @@
           <p class="ion-text-center">
             <ion-button
               type="submit"
-              color="danger"
               expand="block"
               size="large"
               [disabled]="!registro.valid"

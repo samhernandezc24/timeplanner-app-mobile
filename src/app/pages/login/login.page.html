@@ -14,7 +14,7 @@
               label="Teléfono"
               labelPlacement="floating"
               placeholder="Ingresa tu número de teléfono"
-              formControlName="telefono"
+              formControlName="username"
               class="form-control"
               maxlength="15"
               type="text"
@@ -22,11 +22,11 @@
           </ion-item>
           <div
             id="note"
-            *ngFor="let validation of validation_messages.telefono"
+            *ngFor="let validation of validation_messages.username"
           >
             <ion-note
               color="danger"
-              *ngIf="getError('telefono')[(validation.type)]"
+              *ngIf="getError('username')[(validation.type)]"
             >
               <ion-icon name="information-circle-outline"></ion-icon> {{
               validation.message }}
@@ -74,7 +74,6 @@
           <p class="ion-text-center">
             <ion-button
               type="submit"
-              color="danger"
               expand="block"
               size="large"
               [disabled]="!login.valid"
@@ -88,7 +87,7 @@
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" size="large" (click)="registrar()">
+  <ion-button expand="block" color="danger" size="large" (click)="registrar()">
     <ion-icon name="open-outline" slot="start"></ion-icon>
     Registrarme
   </ion-button>
